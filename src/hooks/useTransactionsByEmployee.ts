@@ -40,7 +40,7 @@ export function useTransactionsByEmployee(): TransactionsByEmployeeResult {
     loading, 
     fetchById, 
     invalidateData, 
-    setTransactionApprovalByEmployee // Ensure this is declared above
+    setTransactionApprovalByEmployee
   } as TransactionsByEmployeeResult
   
 }

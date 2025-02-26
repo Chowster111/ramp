@@ -28,11 +28,11 @@ export function App() {
     
     transactionsByEmployeeUtils.invalidateData()
 
-    await employeeUtils.fetchAll() // Fetch employees
-    setIsLoadingEmployees(false) // Stop loading employees as soon as it's done
+    await employeeUtils.fetchAll()
+    setIsLoadingEmployees(false)
 
-    await paginatedTransactionsUtils.fetchAll() // Fetch transactions
-    setIsLoadingTransactions(false) // Stop loading transactions
+    await paginatedTransactionsUtils.fetchAll() 
+    setIsLoadingTransactions(false)
   }, [employeeUtils, paginatedTransactionsUtils, transactionsByEmployeeUtils])
 
   const loadTransactionsByEmployee = useCallback(async (employeeId: string) => {
@@ -54,7 +54,7 @@ export function App() {
         <hr className="RampBreak--l" />
 
         <InputSelect<Employee>
-          isLoading={isLoadingEmployees} // Only track employee loading
+          isLoading={isLoadingEmployees}
           defaultValue={EMPTY_EMPLOYEE}
           items={employees === null ? [] : [EMPTY_EMPLOYEE, ...employees]}
           label="Filter by employee"
@@ -69,7 +69,6 @@ export function App() {
             }
           
             if (newValue.id === EMPTY_EMPLOYEE.id) {
-              // "All Employees" is selected, so load all transactions
               await loadAllTransactions()
             } else {
               await loadTransactionsByEmployee(newValue.id)
